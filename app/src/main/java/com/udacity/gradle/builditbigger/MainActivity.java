@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import pe.ironbit.android.JokeJavaService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,5 +44,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
     }
 
-
+    public void tellJokeFromJavaLibrary(View view) {
+        Toast.makeText(this, JokeJavaService.getJoke(), Toast.LENGTH_SHORT).show();
+    }
 }
