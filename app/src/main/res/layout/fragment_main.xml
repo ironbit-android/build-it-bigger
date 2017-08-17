@@ -24,11 +24,19 @@
         android:text="@string/button_text" />
 
     <Button
+        android:id="@+id/java_library_joke"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/default_joke"
         android:onClick="tellJokeFromJavaLibrary"
         android:text="@string/button_joke_java" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/java_library_joke"
+        android:onClick="tellJokeFromGoogleCloud"
+        android:text="@string/button_joke_cloud" />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"

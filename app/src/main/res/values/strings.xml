@@ -5,5 +5,6 @@
     <string name="action_settings">Settings</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 
-    <string name="button_joke_java">Joke from Java</string>
+    <string name="button_joke_java">Joke from Java Library</string>
+    <string name="button_joke_cloud">Joke from Google Cloud</string>
 </resources>

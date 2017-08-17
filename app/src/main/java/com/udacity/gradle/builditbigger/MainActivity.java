@@ -47,4 +47,9 @@ public class MainActivity extends AppCompatActivity {
     public void tellJokeFromJavaLibrary(View view) {
         Toast.makeText(this, JokeJavaService.getJoke(), Toast.LENGTH_SHORT).show();
     }
+
+    public void tellJokeFromGoogleCloud(View view) {
+        BackendAsyncTask task = new BackendAsyncTask(getApplicationContext());
+        task.execute();
+    }
 }
