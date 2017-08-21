@@ -1,6 +1,7 @@
 package com.udacity.gradle.builditbigger;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -49,13 +49,19 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
     }
 
-    public void tellJokeFromJavaLibrary(View view) {
-        Toast.makeText(this, JokeJavaService.getJoke(), Toast.LENGTH_SHORT).show();
-    }
-
     public void tellJokeFromGoogleCloud(View view) {
         BackendAsyncTask task = new BackendAsyncTask(getApplicationContext());
         task.setBackendListener(listener);
         task.execute();
+    }
+
+    public void tellJokeFromJavaLibrary(View view) {
+        FragmentManager manager = getSupportFragmentManager();
+        MainActivityFragment fragment = (MainActivityFragment)manager.findFragmentById(R.id.fragment);
+        fragment.tellJokeFromJavaLibrary(view);
+    }
+
+    public void showJavaJoke() {
+        Toast.makeText(this, JokeJavaService.getJoke(), Toast.LENGTH_SHORT).show();
     }
 }
