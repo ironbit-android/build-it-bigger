@@ -15,12 +15,22 @@ import pe.ironbit.android.jokeandroidlibrary.JokeAndroidActivity;
 import pe.ironbit.cloud.backend.myApi.MyApi;
 
 public class BackendAsyncTask extends AsyncTask<Void, Void, String> {
+    public interface BackendListener {
+        void onAction();
+    }
+
     private Context context;
 
     private static MyApi myApiService = null;
 
+    private BackendListener listener = null;
+
     public BackendAsyncTask(Context context) {
         this.context = context;
+    }
+
+    public void setBackendListener(BackendListener listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -49,6 +59,10 @@ public class BackendAsyncTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String joke) {
+        if (listener != null) {
+            listener.onAction();
+        }
+
         Intent intent = new Intent(context, JokeAndroidActivity.class);
         intent.putExtra(JokeAndroidActivity.JOKE_ANDROID_LIBRARY_KEY, joke);
 

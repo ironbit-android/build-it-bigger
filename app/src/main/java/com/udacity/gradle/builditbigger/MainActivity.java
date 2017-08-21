@@ -10,6 +10,11 @@ import android.widget.Toast;
 import pe.ironbit.android.JokeJavaService;
 
 public class MainActivity extends AppCompatActivity {
+    private BackendAsyncTask.BackendListener listener = null;
+
+    public void setBackendListener(BackendAsyncTask.BackendListener listener) {
+        this.listener = listener;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void tellJokeFromGoogleCloud(View view) {
         BackendAsyncTask task = new BackendAsyncTask(getApplicationContext());
+        task.setBackendListener(listener);
         task.execute();
     }
 }

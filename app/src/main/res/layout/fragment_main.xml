@@ -32,6 +32,7 @@
         android:text="@string/button_joke_java" />
 
     <Button
+        android:id="@+id/gce_joke"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/java_library_joke"
