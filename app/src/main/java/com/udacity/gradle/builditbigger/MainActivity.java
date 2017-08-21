@@ -8,9 +8,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import pe.ironbit.android.JokeJavaService;
 
 public class MainActivity extends AppCompatActivity {
+    @BindView(R.id.progress_bar)
+    View spinner;
+
     private BackendAsyncTask.BackendListener listener = null;
 
     public void setBackendListener(BackendAsyncTask.BackendListener listener) {
@@ -21,6 +26,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        spinner.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -50,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJokeFromGoogleCloud(View view) {
+        spinner.setVisibility(View.VISIBLE);
+
         BackendAsyncTask task = new BackendAsyncTask(getApplicationContext());
         task.setBackendListener(listener);
         task.execute();
