@@ -21,8 +21,11 @@ public class JokeAndroidActivity extends AppCompatActivity {
         setContentView(R.layout.activity_joke_android);
         ButterKnife.bind(this);
 
+        String joke = "";
         Intent intent = getIntent();
-        String joke = intent.getStringExtra(JOKE_ANDROID_LIBRARY_KEY);
+        if (intent != null) {
+            joke = intent.getStringExtra(JOKE_ANDROID_LIBRARY_KEY);
+        }
 
         if (!TextUtils.isEmpty(joke)) {
             jokeData.setText(joke);
